@@ -2,9 +2,9 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-// General Information about an assembly is controlled through the following
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
+// Informacje ogólne o zestawie zależą od poniższego
+// zestawu atrybutów. Zmień wartości tych atrybutów, aby zmodyfikować informacje
+// związane z zestawem.
 [assembly: AssemblyTitle("Car_Rental")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
@@ -14,22 +14,22 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
-// Setting ComVisible to false makes the types in this assembly not visible
-// to COM components.  If you need to access a type in this assembly from
-// COM, set the ComVisible attribute to true on that type.
+// Ustawienie dla atrybutu ComVisible wartości false powoduje, że typy w tym zestawie stają się niewidoczne
+// dla składników COM. Jeśli musisz uzyskiwać dostęp do typu w tym zestawie
+// z modelu COM, ustaw dla atrybutu ComVisible tego typu wartość true.
 [assembly: ComVisible(false)]
 
-// The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("1997cf30-2d09-4c93-a76e-7d7c7bb9d532")]
+// Poniższy identyfikator GUID odpowiada atrybutowi ID biblioteki typów typelib, jeśli ten projekt jest uwidaczniany w modelu COM
+[assembly: Guid("70d03106-432a-4a13-a56c-66f0da780c28")]
 
-// Version information for an assembly consists of the following four values:
+// Informacje o wersji zestawu obejmują następujące cztery wartości:
 //
-//      Major Version
-//      Minor Version
-//      Build Number
-//      Revision
+//      Wersja główna
+//      Wersja pomocnicza
+//      Numer kompilacji
+//      Poprawka
 //
-// You can specify all the values or you can default the Revision and Build Numbers
-// by using the '*' as shown below:
+// Możesz określić wszystkie te wartości lub użyć wartości domyślnych numerów kompilacji i poprawki,
+// stosując znak „*”, jak pokazano poniżej:
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
