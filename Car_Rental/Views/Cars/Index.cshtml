@@ -1,14 +1,12 @@
-﻿@model IEnumerable<Car_Rental.Models.Cars>
+﻿
+@model IEnumerable<Car_Rental.Models.Cars>
+@using Microsoft.AspNet.Identity
 
-@{
-    ViewBag.Title = "Index";
-}
-
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<h2>Zapoznaj sie z naszą flotą</h2>
+@if (Request.IsAuthenticated) { 
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>}
 <table class="table">
     <tr>
         <th>
@@ -35,35 +33,39 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Model)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nazwa)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Rok_produkcji)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Pojemnosc_silnika)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Moc)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Liczba_drzwi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cena)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nazwa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rok_produkcji)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pojemnosc_silnika)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Moc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Liczba_drzwi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cena)
+            </td>
+            @if (Request.IsAuthenticated)
+            {
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })|
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            }
+        </tr>
+    }
 
 </table>
