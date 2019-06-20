@@ -17,13 +17,13 @@ namespace Car_rental.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Role()
         {
-            this.uzytkownicies = new HashSet<uzytkownicy>();
+            this.uzytkownicy = new HashSet<uzytkownicy>();
         }
     
         public int Id_rola { get; set; }
         public string Nazwa { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<uzytkownicy> uzytkownicies { get; set; }
+        public virtual ICollection<uzytkownicy> uzytkownicy { get; set; }
     }
 }

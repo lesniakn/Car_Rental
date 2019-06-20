@@ -4,14 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="788abc5018084e6d9280024168f4eadf" Name="Diagram1">
-        <EntityTypeShape EntityType="CarRentalDBModel.kategorie" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CarRentalDBModel.marki" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="CarRentalDBModel.modele" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CarRentalDBModel.Role" Width="1.5" PointX="10.375" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CarRentalDBModel.samochody" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CarRentalDBModel.uzytkownicy" Width="1.5" PointX="8" PointY="2.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="CarRentalDBModel.wypozyczenia" Width="1.5" PointX="5.25" PointY="3.125" IsExpanded="true" />
+      <Diagram DiagramId="1b8df8a5fd004920a1dea0eb8f5ab826" Name="Diagram1">
+        <EntityTypeShape EntityType="CarRentalDBModel.kategorie" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentalDBModel.marki" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentalDBModel.modele" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentalDBModel.Role" Width="1.5" PointX="0.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentalDBModel.samochody" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentalDBModel.uzytkownicy" Width="1.5" PointX="3" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarRentalDBModel.wypozyczenia" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
         <AssociationConnector Association="CarRentalDBModel.FK_samochody_Id_kategoria" ManuallyRouted="false" />
         <AssociationConnector Association="CarRentalDBModel.FK_samochody_Id_marka" ManuallyRouted="false" />
         <AssociationConnector Association="CarRentalDBModel.FK_samochody_Id_model" ManuallyRouted="false" />

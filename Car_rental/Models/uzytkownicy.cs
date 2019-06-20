@@ -17,7 +17,7 @@ namespace Car_rental.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public uzytkownicy()
         {
-            this.wypozyczenias = new HashSet<wypozyczenia>();
+            this.wypozyczenia = new HashSet<wypozyczenia>();
         }
     
         public int Id_uzytkownik { get; set; }
@@ -33,6 +33,6 @@ namespace Car_rental.Models
     
         public virtual Role Role { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<wypozyczenia> wypozyczenias { get; set; }
+        public virtual ICollection<wypozyczenia> wypozyczenia { get; set; }
     }
 }

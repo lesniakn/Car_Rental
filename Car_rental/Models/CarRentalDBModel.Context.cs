@@ -25,12 +25,12 @@ namespace Car_rental.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<kategorie> kategories { get; set; }
-        public virtual DbSet<marki> markis { get; set; }
-        public virtual DbSet<modele> modeles { get; set; }
-        public virtual DbSet<Role> Roles { get; set; }
-        public virtual DbSet<samochody> samochodies { get; set; }
-        public virtual DbSet<uzytkownicy> uzytkownicies { get; set; }
-        public virtual DbSet<wypozyczenia> wypozyczenias { get; set; }
+        public virtual DbSet<kategorie> kategorie { get; set; }
+        public virtual DbSet<marki> marki { get; set; }
+        public virtual DbSet<modele> modele { get; set; }
+        public virtual DbSet<Role> Role { get; set; }
+        public virtual DbSet<samochody> samochody { get; set; }
+        public virtual DbSet<uzytkownicy> uzytkownicy { get; set; }
+        public virtual DbSet<wypozyczenia> wypozyczenia { get; set; }
     }
 }

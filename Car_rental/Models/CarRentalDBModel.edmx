@@ -38,8 +38,6 @@
             <PropertyRef Name="Id_samochod" />
           </Key>
           <Property Name="Id_samochod" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Marka" Type="nchar" MaxLength="30" />
-          <Property Name="Model" Type="nchar" MaxLength="30" />
           <Property Name="Rocznik" Type="int" />
           <Property Name="Silnik" Type="float" />
           <Property Name="Id_marka" Type="int" />
@@ -190,7 +188,7 @@
           </Key>
           <Property Name="Id_kategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nazwa" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="samochodies" Relationship="Self.FK_samochody_Id_kategoria" FromRole="kategorie" ToRole="samochody" />
+          <NavigationProperty Name="samochody" Relationship="Self.FK_samochody_Id_kategoria" FromRole="kategorie" ToRole="samochody" />
         </EntityType>
         <EntityType Name="marki">
           <Key>
@@ -198,7 +196,7 @@
           </Key>
           <Property Name="Id_marka" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nazwa" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="samochodies" Relationship="Self.FK_samochody_Id_marka" FromRole="marki" ToRole="samochody" />
+          <NavigationProperty Name="samochody" Relationship="Self.FK_samochody_Id_marka" FromRole="marki" ToRole="samochody" />
         </EntityType>
         <EntityType Name="modele">
           <Key>
@@ -206,7 +204,7 @@
           </Key>
           <Property Name="Id_model" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nazwa" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="samochodies" Relationship="Self.FK_samochody_Id_model" FromRole="modele" ToRole="samochody" />
+          <NavigationProperty Name="samochody" Relationship="Self.FK_samochody_Id_model" FromRole="modele" ToRole="samochody" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -214,15 +212,13 @@
           </Key>
           <Property Name="Id_rola" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nazwa" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="uzytkownicies" Relationship="Self.FK_uzytkownicy_Rola" FromRole="Role" ToRole="uzytkownicy" />
+          <NavigationProperty Name="uzytkownicy" Relationship="Self.FK_uzytkownicy_Rola" FromRole="Role" ToRole="uzytkownicy" />
         </EntityType>
         <EntityType Name="samochody">
           <Key>
             <PropertyRef Name="Id_samochod" />
           </Key>
           <Property Name="Id_samochod" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Marka" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
-          <Property Name="Model" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
           <Property Name="Rocznik" Type="Int32" />
           <Property Name="Silnik" Type="Double" />
           <Property Name="Id_marka" Type="Int32" />
@@ -233,7 +229,7 @@
           <NavigationProperty Name="kategorie" Relationship="Self.FK_samochody_Id_kategoria" FromRole="samochody" ToRole="kategorie" />
           <NavigationProperty Name="marki" Relationship="Self.FK_samochody_Id_marka" FromRole="samochody" ToRole="marki" />
           <NavigationProperty Name="modele" Relationship="Self.FK_samochody_Id_model" FromRole="samochody" ToRole="modele" />
-          <NavigationProperty Name="wypozyczenias" Relationship="Self.FK_wypozyczenia_Id_samochodu" FromRole="samochody" ToRole="wypozyczenia" />
+          <NavigationProperty Name="wypozyczenia" Relationship="Self.FK_wypozyczenia_Id_samochodu" FromRole="samochody" ToRole="wypozyczenia" />
         </EntityType>
         <EntityType Name="uzytkownicy">
           <Key>
@@ -250,7 +246,7 @@
           <Property Name="Nr_prawa_jazdy" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="PESEL" Type="String" MaxLength="11" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="Role" Relationship="Self.FK_uzytkownicy_Rola" FromRole="uzytkownicy" ToRole="Role" />
-          <NavigationProperty Name="wypozyczenias" Relationship="Self.FK_wypozyczenia_Id_uzytkownika" FromRole="uzytkownicy" ToRole="wypozyczenia" />
+          <NavigationProperty Name="wypozyczenia" Relationship="Self.FK_wypozyczenia_Id_uzytkownika" FromRole="uzytkownicy" ToRole="wypozyczenia" />
         </EntityType>
         <EntityType Name="wypozyczenia">
           <Key>
@@ -338,36 +334,36 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="CarRentalDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="kategories" EntityType="Self.kategorie" />
-          <EntitySet Name="markis" EntityType="Self.marki" />
-          <EntitySet Name="modeles" EntityType="Self.modele" />
-          <EntitySet Name="Roles" EntityType="Self.Role" />
-          <EntitySet Name="samochodies" EntityType="Self.samochody" />
-          <EntitySet Name="uzytkownicies" EntityType="Self.uzytkownicy" />
-          <EntitySet Name="wypozyczenias" EntityType="Self.wypozyczenia" />
+          <EntitySet Name="kategorie" EntityType="Self.kategorie" />
+          <EntitySet Name="marki" EntityType="Self.marki" />
+          <EntitySet Name="modele" EntityType="Self.modele" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="samochody" EntityType="Self.samochody" />
+          <EntitySet Name="uzytkownicy" EntityType="Self.uzytkownicy" />
+          <EntitySet Name="wypozyczenia" EntityType="Self.wypozyczenia" />
           <AssociationSet Name="FK_samochody_Id_kategoria" Association="Self.FK_samochody_Id_kategoria">
-            <End Role="kategorie" EntitySet="kategories" />
-            <End Role="samochody" EntitySet="samochodies" />
+            <End Role="kategorie" EntitySet="kategorie" />
+            <End Role="samochody" EntitySet="samochody" />
           </AssociationSet>
           <AssociationSet Name="FK_samochody_Id_marka" Association="Self.FK_samochody_Id_marka">
-            <End Role="marki" EntitySet="markis" />
-            <End Role="samochody" EntitySet="samochodies" />
+            <End Role="marki" EntitySet="marki" />
+            <End Role="samochody" EntitySet="samochody" />
           </AssociationSet>
           <AssociationSet Name="FK_samochody_Id_model" Association="Self.FK_samochody_Id_model">
-            <End Role="modele" EntitySet="modeles" />
-            <End Role="samochody" EntitySet="samochodies" />
+            <End Role="modele" EntitySet="modele" />
+            <End Role="samochody" EntitySet="samochody" />
           </AssociationSet>
           <AssociationSet Name="FK_uzytkownicy_Rola" Association="Self.FK_uzytkownicy_Rola">
-            <End Role="Role" EntitySet="Roles" />
-            <End Role="uzytkownicy" EntitySet="uzytkownicies" />
+            <End Role="Role" EntitySet="Role" />
+            <End Role="uzytkownicy" EntitySet="uzytkownicy" />
           </AssociationSet>
           <AssociationSet Name="FK_wypozyczenia_Id_samochodu" Association="Self.FK_wypozyczenia_Id_samochodu">
-            <End Role="samochody" EntitySet="samochodies" />
-            <End Role="wypozyczenia" EntitySet="wypozyczenias" />
+            <End Role="samochody" EntitySet="samochody" />
+            <End Role="wypozyczenia" EntitySet="wypozyczenia" />
           </AssociationSet>
           <AssociationSet Name="FK_wypozyczenia_Id_uzytkownika" Association="Self.FK_wypozyczenia_Id_uzytkownika">
-            <End Role="uzytkownicy" EntitySet="uzytkownicies" />
-            <End Role="wypozyczenia" EntitySet="wypozyczenias" />
+            <End Role="uzytkownicy" EntitySet="uzytkownicy" />
+            <End Role="wypozyczenia" EntitySet="wypozyczenia" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -376,7 +372,7 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="CarRentalDBModelStoreContainer" CdmEntityContainer="CarRentalDBEntities">
-          <EntitySetMapping Name="kategories">
+          <EntitySetMapping Name="kategorie">
             <EntityTypeMapping TypeName="CarRentalDBModel.kategorie">
               <MappingFragment StoreEntitySet="kategorie">
                 <ScalarProperty Name="Id_kategoria" ColumnName="Id_kategoria" />
@@ -384,7 +380,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="markis">
+          <EntitySetMapping Name="marki">
             <EntityTypeMapping TypeName="CarRentalDBModel.marki">
               <MappingFragment StoreEntitySet="marki">
                 <ScalarProperty Name="Id_marka" ColumnName="Id_marka" />
@@ -392,7 +388,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="modeles">
+          <EntitySetMapping Name="modele">
             <EntityTypeMapping TypeName="CarRentalDBModel.modele">
               <MappingFragment StoreEntitySet="modele">
                 <ScalarProperty Name="Id_model" ColumnName="Id_model" />
@@ -400,7 +396,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Roles">
+          <EntitySetMapping Name="Role">
             <EntityTypeMapping TypeName="CarRentalDBModel.Role">
               <MappingFragment StoreEntitySet="Role">
                 <ScalarProperty Name="Id_rola" ColumnName="Id_rola" />
@@ -408,12 +404,10 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="samochodies">
+          <EntitySetMapping Name="samochody">
             <EntityTypeMapping TypeName="CarRentalDBModel.samochody">
               <MappingFragment StoreEntitySet="samochody">
                 <ScalarProperty Name="Id_samochod" ColumnName="Id_samochod" />
-                <ScalarProperty Name="Marka" ColumnName="Marka" />
-                <ScalarProperty Name="Model" ColumnName="Model" />
                 <ScalarProperty Name="Rocznik" ColumnName="Rocznik" />
                 <ScalarProperty Name="Silnik" ColumnName="Silnik" />
                 <ScalarProperty Name="Id_marka" ColumnName="Id_marka" />
@@ -424,7 +418,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="uzytkownicies">
+          <EntitySetMapping Name="uzytkownicy">
             <EntityTypeMapping TypeName="CarRentalDBModel.uzytkownicy">
               <MappingFragment StoreEntitySet="uzytkownicy">
                 <ScalarProperty Name="Id_uzytkownik" ColumnName="Id_uzytkownik" />
@@ -440,7 +434,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="wypozyczenias">
+          <EntitySetMapping Name="wypozyczenia">
             <EntityTypeMapping TypeName="CarRentalDBModel.wypozyczenia">
               <MappingFragment StoreEntitySet="wypozyczenia">
                 <ScalarProperty Name="Id_wypozyczenia" ColumnName="Id_wypozyczenia" />
@@ -466,7 +460,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

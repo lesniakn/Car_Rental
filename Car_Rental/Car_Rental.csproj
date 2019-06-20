@@ -127,6 +127,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\samochodyController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -179,8 +180,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Models\CarRentalDBModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>CarRentalDBModel.Context.cs</LastGenOutput>
       <DependentUpon>CarRentalDBModel.edmx</DependentUpon>
+      <LastGenOutput>CarRentalDBModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\CarRentalDBModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -223,6 +224,11 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\samochody\Create.cshtml" />
+    <Content Include="Views\samochody\Delete.cshtml" />
+    <Content Include="Views\samochody\Details.cshtml" />
+    <Content Include="Views\samochody\Edit.cshtml" />
+    <Content Include="Views\samochody\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
