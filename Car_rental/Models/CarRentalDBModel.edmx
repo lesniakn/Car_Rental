@@ -1,0 +1,478 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CarRentalDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="kategorie">
+          <Key>
+            <PropertyRef Name="Id_kategoria" />
+          </Key>
+          <Property Name="Id_kategoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nazwa" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="marki">
+          <Key>
+            <PropertyRef Name="Id_marka" />
+          </Key>
+          <Property Name="Id_marka" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nazwa" Type="nchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="modele">
+          <Key>
+            <PropertyRef Name="Id_model" />
+          </Key>
+          <Property Name="Id_model" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nazwa" Type="nchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id_rola" />
+          </Key>
+          <Property Name="Id_rola" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nazwa" Type="nchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="samochody">
+          <Key>
+            <PropertyRef Name="Id_samochod" />
+          </Key>
+          <Property Name="Id_samochod" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Marka" Type="nchar" MaxLength="30" />
+          <Property Name="Model" Type="nchar" MaxLength="30" />
+          <Property Name="Rocznik" Type="int" />
+          <Property Name="Silnik" Type="float" />
+          <Property Name="Id_marka" Type="int" />
+          <Property Name="Id_model" Type="int" />
+          <Property Name="Data_rejestracji" Type="date" />
+          <Property Name="Cena" Type="float" />
+          <Property Name="Id_kategoria" Type="int" />
+        </EntityType>
+        <EntityType Name="uzytkownicy">
+          <Key>
+            <PropertyRef Name="Id_uzytkownik" />
+          </Key>
+          <Property Name="Id_uzytkownik" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Imie" Type="nchar" MaxLength="10" />
+          <Property Name="Nazwisko" Type="nchar" MaxLength="30" />
+          <Property Name="Adres_zamieszkania" Type="nchar" MaxLength="30" />
+          <Property Name="Data_urodzenia" Type="date" />
+          <Property Name="Login" Type="nchar" MaxLength="20" />
+          <Property Name="Haslo" Type="nchar" MaxLength="30" />
+          <Property Name="Rola" Type="int" />
+          <Property Name="Nr_prawa_jazdy" Type="nchar" MaxLength="10" />
+          <Property Name="PESEL" Type="nchar" MaxLength="11" />
+        </EntityType>
+        <EntityType Name="wypozyczenia">
+          <Key>
+            <PropertyRef Name="Id_wypozyczenia" />
+          </Key>
+          <Property Name="Id_wypozyczenia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_uzytkownika" Type="int" />
+          <Property Name="Id_samochodu" Type="int" />
+          <Property Name="Data_wypozyczenia" Type="date" />
+          <Property Name="Data_zwrotu" Type="date" />
+          <Property Name="Cena" Type="float" />
+        </EntityType>
+        <Association Name="FK_samochody_Id_kategoria">
+          <End Role="kategorie" Type="Self.kategorie" Multiplicity="0..1" />
+          <End Role="samochody" Type="Self.samochody" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kategorie">
+              <PropertyRef Name="Id_kategoria" />
+            </Principal>
+            <Dependent Role="samochody">
+              <PropertyRef Name="Id_kategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_samochody_Id_marka">
+          <End Role="marki" Type="Self.marki" Multiplicity="0..1" />
+          <End Role="samochody" Type="Self.samochody" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="marki">
+              <PropertyRef Name="Id_marka" />
+            </Principal>
+            <Dependent Role="samochody">
+              <PropertyRef Name="Id_marka" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_samochody_Id_model">
+          <End Role="modele" Type="Self.modele" Multiplicity="0..1" />
+          <End Role="samochody" Type="Self.samochody" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="modele">
+              <PropertyRef Name="Id_model" />
+            </Principal>
+            <Dependent Role="samochody">
+              <PropertyRef Name="Id_model" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_uzytkownicy_Rola">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="uzytkownicy" Type="Self.uzytkownicy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id_rola" />
+            </Principal>
+            <Dependent Role="uzytkownicy">
+              <PropertyRef Name="Rola" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_wypozyczenia_Id_samochodu">
+          <End Role="samochody" Type="Self.samochody" Multiplicity="0..1" />
+          <End Role="wypozyczenia" Type="Self.wypozyczenia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="samochody">
+              <PropertyRef Name="Id_samochod" />
+            </Principal>
+            <Dependent Role="wypozyczenia">
+              <PropertyRef Name="Id_samochodu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_wypozyczenia_Id_uzytkownika">
+          <End Role="uzytkownicy" Type="Self.uzytkownicy" Multiplicity="0..1" />
+          <End Role="wypozyczenia" Type="Self.wypozyczenia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="uzytkownicy">
+              <PropertyRef Name="Id_uzytkownik" />
+            </Principal>
+            <Dependent Role="wypozyczenia">
+              <PropertyRef Name="Id_uzytkownika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CarRentalDBModelStoreContainer">
+          <EntitySet Name="kategorie" EntityType="Self.kategorie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="marki" EntityType="Self.marki" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="modele" EntityType="Self.modele" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="samochody" EntityType="Self.samochody" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="uzytkownicy" EntityType="Self.uzytkownicy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="wypozyczenia" EntityType="Self.wypozyczenia" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_samochody_Id_kategoria" Association="Self.FK_samochody_Id_kategoria">
+            <End Role="kategorie" EntitySet="kategorie" />
+            <End Role="samochody" EntitySet="samochody" />
+          </AssociationSet>
+          <AssociationSet Name="FK_samochody_Id_marka" Association="Self.FK_samochody_Id_marka">
+            <End Role="marki" EntitySet="marki" />
+            <End Role="samochody" EntitySet="samochody" />
+          </AssociationSet>
+          <AssociationSet Name="FK_samochody_Id_model" Association="Self.FK_samochody_Id_model">
+            <End Role="modele" EntitySet="modele" />
+            <End Role="samochody" EntitySet="samochody" />
+          </AssociationSet>
+          <AssociationSet Name="FK_uzytkownicy_Rola" Association="Self.FK_uzytkownicy_Rola">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="uzytkownicy" EntitySet="uzytkownicy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_wypozyczenia_Id_samochodu" Association="Self.FK_wypozyczenia_Id_samochodu">
+            <End Role="samochody" EntitySet="samochody" />
+            <End Role="wypozyczenia" EntitySet="wypozyczenia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_wypozyczenia_Id_uzytkownika" Association="Self.FK_wypozyczenia_Id_uzytkownika">
+            <End Role="uzytkownicy" EntitySet="uzytkownicy" />
+            <End Role="wypozyczenia" EntitySet="wypozyczenia" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CarRentalDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="kategorie">
+          <Key>
+            <PropertyRef Name="Id_kategoria" />
+          </Key>
+          <Property Name="Id_kategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nazwa" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="samochodies" Relationship="Self.FK_samochody_Id_kategoria" FromRole="kategorie" ToRole="samochody" />
+        </EntityType>
+        <EntityType Name="marki">
+          <Key>
+            <PropertyRef Name="Id_marka" />
+          </Key>
+          <Property Name="Id_marka" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nazwa" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="samochodies" Relationship="Self.FK_samochody_Id_marka" FromRole="marki" ToRole="samochody" />
+        </EntityType>
+        <EntityType Name="modele">
+          <Key>
+            <PropertyRef Name="Id_model" />
+          </Key>
+          <Property Name="Id_model" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nazwa" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="samochodies" Relationship="Self.FK_samochody_Id_model" FromRole="modele" ToRole="samochody" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id_rola" />
+          </Key>
+          <Property Name="Id_rola" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nazwa" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="uzytkownicies" Relationship="Self.FK_uzytkownicy_Rola" FromRole="Role" ToRole="uzytkownicy" />
+        </EntityType>
+        <EntityType Name="samochody">
+          <Key>
+            <PropertyRef Name="Id_samochod" />
+          </Key>
+          <Property Name="Id_samochod" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Marka" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="Model" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="Rocznik" Type="Int32" />
+          <Property Name="Silnik" Type="Double" />
+          <Property Name="Id_marka" Type="Int32" />
+          <Property Name="Id_model" Type="Int32" />
+          <Property Name="Data_rejestracji" Type="DateTime" Precision="0" />
+          <Property Name="Cena" Type="Double" />
+          <Property Name="Id_kategoria" Type="Int32" />
+          <NavigationProperty Name="kategorie" Relationship="Self.FK_samochody_Id_kategoria" FromRole="samochody" ToRole="kategorie" />
+          <NavigationProperty Name="marki" Relationship="Self.FK_samochody_Id_marka" FromRole="samochody" ToRole="marki" />
+          <NavigationProperty Name="modele" Relationship="Self.FK_samochody_Id_model" FromRole="samochody" ToRole="modele" />
+          <NavigationProperty Name="wypozyczenias" Relationship="Self.FK_wypozyczenia_Id_samochodu" FromRole="samochody" ToRole="wypozyczenia" />
+        </EntityType>
+        <EntityType Name="uzytkownicy">
+          <Key>
+            <PropertyRef Name="Id_uzytkownik" />
+          </Key>
+          <Property Name="Id_uzytkownik" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Imie" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Nazwisko" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="Adres_zamieszkania" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="Data_urodzenia" Type="DateTime" Precision="0" />
+          <Property Name="Login" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Haslo" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="Rola" Type="Int32" />
+          <Property Name="Nr_prawa_jazdy" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="PESEL" Type="String" MaxLength="11" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_uzytkownicy_Rola" FromRole="uzytkownicy" ToRole="Role" />
+          <NavigationProperty Name="wypozyczenias" Relationship="Self.FK_wypozyczenia_Id_uzytkownika" FromRole="uzytkownicy" ToRole="wypozyczenia" />
+        </EntityType>
+        <EntityType Name="wypozyczenia">
+          <Key>
+            <PropertyRef Name="Id_wypozyczenia" />
+          </Key>
+          <Property Name="Id_wypozyczenia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_uzytkownika" Type="Int32" />
+          <Property Name="Id_samochodu" Type="Int32" />
+          <Property Name="Data_wypozyczenia" Type="DateTime" Precision="0" />
+          <Property Name="Data_zwrotu" Type="DateTime" Precision="0" />
+          <Property Name="Cena" Type="Double" />
+          <NavigationProperty Name="samochody" Relationship="Self.FK_wypozyczenia_Id_samochodu" FromRole="wypozyczenia" ToRole="samochody" />
+          <NavigationProperty Name="uzytkownicy" Relationship="Self.FK_wypozyczenia_Id_uzytkownika" FromRole="wypozyczenia" ToRole="uzytkownicy" />
+        </EntityType>
+        <Association Name="FK_samochody_Id_kategoria">
+          <End Role="kategorie" Type="Self.kategorie" Multiplicity="0..1" />
+          <End Role="samochody" Type="Self.samochody" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kategorie">
+              <PropertyRef Name="Id_kategoria" />
+            </Principal>
+            <Dependent Role="samochody">
+              <PropertyRef Name="Id_kategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_samochody_Id_marka">
+          <End Role="marki" Type="Self.marki" Multiplicity="0..1" />
+          <End Role="samochody" Type="Self.samochody" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="marki">
+              <PropertyRef Name="Id_marka" />
+            </Principal>
+            <Dependent Role="samochody">
+              <PropertyRef Name="Id_marka" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_samochody_Id_model">
+          <End Role="modele" Type="Self.modele" Multiplicity="0..1" />
+          <End Role="samochody" Type="Self.samochody" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="modele">
+              <PropertyRef Name="Id_model" />
+            </Principal>
+            <Dependent Role="samochody">
+              <PropertyRef Name="Id_model" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_uzytkownicy_Rola">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="uzytkownicy" Type="Self.uzytkownicy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id_rola" />
+            </Principal>
+            <Dependent Role="uzytkownicy">
+              <PropertyRef Name="Rola" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_wypozyczenia_Id_samochodu">
+          <End Role="samochody" Type="Self.samochody" Multiplicity="0..1" />
+          <End Role="wypozyczenia" Type="Self.wypozyczenia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="samochody">
+              <PropertyRef Name="Id_samochod" />
+            </Principal>
+            <Dependent Role="wypozyczenia">
+              <PropertyRef Name="Id_samochodu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_wypozyczenia_Id_uzytkownika">
+          <End Role="uzytkownicy" Type="Self.uzytkownicy" Multiplicity="0..1" />
+          <End Role="wypozyczenia" Type="Self.wypozyczenia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="uzytkownicy">
+              <PropertyRef Name="Id_uzytkownik" />
+            </Principal>
+            <Dependent Role="wypozyczenia">
+              <PropertyRef Name="Id_uzytkownika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CarRentalDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="kategories" EntityType="Self.kategorie" />
+          <EntitySet Name="markis" EntityType="Self.marki" />
+          <EntitySet Name="modeles" EntityType="Self.modele" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="samochodies" EntityType="Self.samochody" />
+          <EntitySet Name="uzytkownicies" EntityType="Self.uzytkownicy" />
+          <EntitySet Name="wypozyczenias" EntityType="Self.wypozyczenia" />
+          <AssociationSet Name="FK_samochody_Id_kategoria" Association="Self.FK_samochody_Id_kategoria">
+            <End Role="kategorie" EntitySet="kategories" />
+            <End Role="samochody" EntitySet="samochodies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_samochody_Id_marka" Association="Self.FK_samochody_Id_marka">
+            <End Role="marki" EntitySet="markis" />
+            <End Role="samochody" EntitySet="samochodies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_samochody_Id_model" Association="Self.FK_samochody_Id_model">
+            <End Role="modele" EntitySet="modeles" />
+            <End Role="samochody" EntitySet="samochodies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_uzytkownicy_Rola" Association="Self.FK_uzytkownicy_Rola">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="uzytkownicy" EntitySet="uzytkownicies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_wypozyczenia_Id_samochodu" Association="Self.FK_wypozyczenia_Id_samochodu">
+            <End Role="samochody" EntitySet="samochodies" />
+            <End Role="wypozyczenia" EntitySet="wypozyczenias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_wypozyczenia_Id_uzytkownika" Association="Self.FK_wypozyczenia_Id_uzytkownika">
+            <End Role="uzytkownicy" EntitySet="uzytkownicies" />
+            <End Role="wypozyczenia" EntitySet="wypozyczenias" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CarRentalDBModelStoreContainer" CdmEntityContainer="CarRentalDBEntities">
+          <EntitySetMapping Name="kategories">
+            <EntityTypeMapping TypeName="CarRentalDBModel.kategorie">
+              <MappingFragment StoreEntitySet="kategorie">
+                <ScalarProperty Name="Id_kategoria" ColumnName="Id_kategoria" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="markis">
+            <EntityTypeMapping TypeName="CarRentalDBModel.marki">
+              <MappingFragment StoreEntitySet="marki">
+                <ScalarProperty Name="Id_marka" ColumnName="Id_marka" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="modeles">
+            <EntityTypeMapping TypeName="CarRentalDBModel.modele">
+              <MappingFragment StoreEntitySet="modele">
+                <ScalarProperty Name="Id_model" ColumnName="Id_model" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="CarRentalDBModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Id_rola" ColumnName="Id_rola" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="samochodies">
+            <EntityTypeMapping TypeName="CarRentalDBModel.samochody">
+              <MappingFragment StoreEntitySet="samochody">
+                <ScalarProperty Name="Id_samochod" ColumnName="Id_samochod" />
+                <ScalarProperty Name="Marka" ColumnName="Marka" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Rocznik" ColumnName="Rocznik" />
+                <ScalarProperty Name="Silnik" ColumnName="Silnik" />
+                <ScalarProperty Name="Id_marka" ColumnName="Id_marka" />
+                <ScalarProperty Name="Id_model" ColumnName="Id_model" />
+                <ScalarProperty Name="Data_rejestracji" ColumnName="Data_rejestracji" />
+                <ScalarProperty Name="Cena" ColumnName="Cena" />
+                <ScalarProperty Name="Id_kategoria" ColumnName="Id_kategoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="uzytkownicies">
+            <EntityTypeMapping TypeName="CarRentalDBModel.uzytkownicy">
+              <MappingFragment StoreEntitySet="uzytkownicy">
+                <ScalarProperty Name="Id_uzytkownik" ColumnName="Id_uzytkownik" />
+                <ScalarProperty Name="Imie" ColumnName="Imie" />
+                <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+                <ScalarProperty Name="Adres_zamieszkania" ColumnName="Adres_zamieszkania" />
+                <ScalarProperty Name="Data_urodzenia" ColumnName="Data_urodzenia" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Haslo" ColumnName="Haslo" />
+                <ScalarProperty Name="Rola" ColumnName="Rola" />
+                <ScalarProperty Name="Nr_prawa_jazdy" ColumnName="Nr_prawa_jazdy" />
+                <ScalarProperty Name="PESEL" ColumnName="PESEL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="wypozyczenias">
+            <EntityTypeMapping TypeName="CarRentalDBModel.wypozyczenia">
+              <MappingFragment StoreEntitySet="wypozyczenia">
+                <ScalarProperty Name="Id_wypozyczenia" ColumnName="Id_wypozyczenia" />
+                <ScalarProperty Name="Id_uzytkownika" ColumnName="Id_uzytkownika" />
+                <ScalarProperty Name="Id_samochodu" ColumnName="Id_samochodu" />
+                <ScalarProperty Name="Data_wypozyczenia" ColumnName="Data_wypozyczenia" />
+                <ScalarProperty Name="Data_zwrotu" ColumnName="Data_zwrotu" />
+                <ScalarProperty Name="Cena" ColumnName="Cena" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Informacje ogólne o zestawie zależą od poniższego
 // zestawu atrybutów. Zmień wartości tych atrybutów, aby zmodyfikować informacje
 // związane z zestawem.
-[assembly: AssemblyTitle("Car_Rental")]
+[assembly: AssemblyTitle("Car_rental")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Car_Rental")]
+[assembly: AssemblyProduct("Car_rental")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Poniższy identyfikator GUID odpowiada atrybutowi ID biblioteki typów typelib, jeśli ten projekt jest uwidaczniany w modelu COM
-[assembly: Guid("70d03106-432a-4a13-a56c-66f0da780c28")]
+[assembly: Guid("1b019657-cc89-47ac-98aa-9ca4cd9c9aeb")]
 
 // Informacje o wersji zestawu obejmują następujące cztery wartości:
 //

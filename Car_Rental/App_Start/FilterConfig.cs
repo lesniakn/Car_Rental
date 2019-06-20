@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace Car_Rental
+namespace Car_rental
 {
     public class FilterConfig
     {
