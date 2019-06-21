@@ -11,7 +11,8 @@ namespace Car_rental.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class uzytkownicy
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,16 +20,27 @@ namespace Car_rental.Models
         {
             this.wypozyczenia = new HashSet<wypozyczenia>();
         }
-    
+        [Required]
         public int Id_uzytkownik { get; set; }
+        [Required]
         public string Imie { get; set; }
+        [Required]
         public string Nazwisko { get; set; }
+        [Required]
         public string Adres_zamieszkania { get; set; }
+        [Required]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         public Nullable<System.DateTime> Data_urodzenia { get; set; }
+        [Required]
         public string Login { get; set; }
         public string Haslo { get; set; }
+        [Required]
         public Nullable<int> Rola { get; set; }
+        [Required]
         public string Nr_prawa_jazdy { get; set; }
+        [Required]
+        [MinLength(11)]
         public string PESEL { get; set; }
     
         public virtual Role Role { get; set; }

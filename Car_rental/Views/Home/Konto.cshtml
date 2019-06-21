@@ -11,21 +11,37 @@
 
 <div class="row">
     <div class="col-md-4">
-        <h2>Panel użytkownika</h2>
+        <h3>Panel Użytkownika</h3>
         <li>@Html.ActionLink("Moje wypożyczenia", "Index", "wypozyczenia")</li>
+    </div>
 
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
+    @{
+        int temp = Convert.ToInt32(Session["Rola"]);
+        if (Session["Login"] != null && temp >= 2)
+        {
     <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        <h3>Panel Pracownika</h3>
+        <li>@Html.ActionLink("Kategorie samochodów", "Index", "kategorie")</li>
+        <li>@Html.ActionLink("Marki", "Index", "marki")</li>
+        <li>@Html.ActionLink("Modele", "Index", "modele")</li>
+        <li>@Html.ActionLink("Samochody", "Index", "samochody")</li>
     </div>
+        }
+    }
+    @{
+        if (Session["Login"] != null && temp >= 3)
+        {
     <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        <h3>Panel Administratora</h3>
+        <li>@Html.ActionLink("Uzytkownicy", "Index", "uzytkownicy")</li>
+
     </div>
+        }
+    }
+
+
+
+
 </div>
 
 

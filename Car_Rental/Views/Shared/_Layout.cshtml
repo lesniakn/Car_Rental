@@ -8,6 +8,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
+
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -20,7 +21,8 @@
                     }
                     else
                     {
-                        <li>@Html.ActionLink("Jestes zalogowany", "Konto", "Home", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+                        string zalogowany = (string)(Session["Login"]);
+                        <li>@Html.ActionLink(zalogowany, "Konto", "Home", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
                     }
 
                 }
@@ -32,7 +34,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    @Html.ActionLink("Nazwa aplikacji", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                    @Html.ActionLink("Car Rental App", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
                 </div>
 
                 <div class="navbar-collapse collapse">
@@ -43,7 +45,7 @@
                         <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
                         @{
                             int temp = Convert.ToInt32(Session["Rola"]);
-                            if (temp == 3)
+                            if (temp >= 2)
                             {
                                 <li>@Html.ActionLink("Uzytkownicy", "Index", "uzytkownicy")</li>
                             }

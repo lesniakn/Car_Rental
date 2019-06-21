@@ -11,14 +11,25 @@ namespace Car_rental.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class wypozyczenia
     {
+        [Required]
         public int Id_wypozyczenia { get; set; }
+        [Required]
         public Nullable<int> Id_uzytkownika { get; set; }
+        [Required]
         public Nullable<int> Id_samochodu { get; set; }
+        [Required]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         public Nullable<System.DateTime> Data_wypozyczenia { get; set; }
+        [Required]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         public Nullable<System.DateTime> Data_zwrotu { get; set; }
+        [Required]
         public Nullable<double> Cena { get; set; }
     
         public virtual samochody samochody { get; set; }

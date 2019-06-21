@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Car_rental.Models.uzytkownicy>
 @{
     int temp = Convert.ToInt32(Session["Rola"]);
-    if (Session["Login"] == null && temp >= 2)
+    if (Session["Login"] == null && temp < 2)
     {
         Response.Redirect("~/Home/Index");
     }
@@ -49,40 +49,48 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Imie)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nazwisko)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Adres_zamieszkania)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Data_urodzenia)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Login)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Haslo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nr_prawa_jazdy)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PESEL)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Role.Nazwa)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id_uzytkownik }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id_uzytkownik }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id_uzytkownik })
-            </td>
-        </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Imie)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nazwisko)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Adres_zamieszkania)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Data_urodzenia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Login)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Haslo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nr_prawa_jazdy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PESEL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Role.Nazwa)
+        </td>
+        @{
+            if (temp <= 2)
+            {
+                <td>
+                    @if (temp == 3)
+                    {
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id_uzytkownik }) }
+                    @Html.ActionLink("Details", "Details", new { id = item.Id_uzytkownik }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id_uzytkownik })
+                    
+                </td>
+            }
+        }
+    </tr>
     }
 
 </table>

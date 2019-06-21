@@ -1,6 +1,7 @@
 ﻿@model Car_rental.Models.kategorie
 @{
-    if (Session["Login"] == null)
+    int temp = Convert.ToInt32(Session["Rola"]);
+    if (Session["Login"] == null && temp < 2)
     {
         Response.Redirect("~/Home/Index");
     }

@@ -2,7 +2,7 @@
 
 @{
     int temp = Convert.ToInt32(Session["Rola"]);
-    if (Session["Login"] == null && temp >= 2)
+    if (Session["Login"] == null && temp < 2)
     {
         Response.Redirect("~/Home/Index");
     }
