@@ -53,9 +53,8 @@
                 @Html.DisplayFor(modelItem => item.uzytkownicy.Imie)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id_wypozyczenia }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id_wypozyczenia }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id_wypozyczenia })
+                @Html.ActionLink("Edytuj rezerwację", "Edit", new { id = item.Id_wypozyczenia }) |
+                @Html.ActionLink("Odwołaj rezerwację", "Delete", new { id = item.Id_wypozyczenia })
             </td>
         </tr>
     }
