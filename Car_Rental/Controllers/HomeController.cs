@@ -64,6 +64,14 @@ namespace Car_rental.Controllers
             }
         }
 
+        public ActionResult Wyloguj()
+        {
+            Session["Login"] = null;
+            Session["Rola"] = null;
+
+            return RedirectToAction("Index", "Home");
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
