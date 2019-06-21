@@ -1,7 +1,11 @@
 ﻿@model Car_rental.Models.marki
 
 @{
-    ViewBag.Title = "Delete";
+    int temp = Convert.ToInt32(Session["Rola"]);
+    if (Session["Login"] == null && temp >= 2)
+    {
+        Response.Redirect("~/Home/Index");
+    }
 }
 
 <h2>Delete</h2>
@@ -21,7 +25,8 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">

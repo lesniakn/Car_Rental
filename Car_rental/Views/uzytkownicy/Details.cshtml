@@ -1,5 +1,11 @@
 ﻿@model Car_rental.Models.uzytkownicy
-
+@{
+    int temp = Convert.ToInt32(Session["Rola"]);
+    if (Session["Login"] == null && temp >= 2)
+    {
+        Response.Redirect("~/Home/Index");
+    }
+}
 @{
     ViewBag.Title = "Details";
 }

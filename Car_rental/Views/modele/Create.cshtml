@@ -1,5 +1,10 @@
 ﻿@model Car_rental.Models.modele
-
+@{
+    if (Session["Login"] == null)
+    {
+        Response.Redirect("~/Home/Index");
+    }
+}
 @{
     ViewBag.Title = "Create";
 }
@@ -7,10 +12,10 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>modele</h4>
         <hr />

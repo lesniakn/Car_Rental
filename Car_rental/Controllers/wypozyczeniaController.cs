@@ -17,8 +17,10 @@ namespace Car_rental.Controllers
         // GET: wypozyczenia
         public ActionResult Index()
         {
+            int temp = Convert.ToInt32(Session["Id_uzytkownik"]);
             var wypozyczenia = db.wypozyczenia.Include(w => w.samochody).Include(w => w.uzytkownicy);
-            return View(wypozyczenia.ToList());
+            var mojalista = wypozyczenia.Where(x => x.Id_uzytkownika == temp);
+            return View(mojalista.ToList());
         }
 
         // GET: wypozyczenia/Details/5
@@ -40,7 +42,7 @@ namespace Car_rental.Controllers
         public ActionResult Create()
         {
             ViewBag.Id_samochodu = new SelectList(db.samochody, "Id_samochod", "Id_samochod");
-            ViewBag.Id_uzytkownika = new SelectList(db.uzytkownicy, "Id_uzytkownik", "Imie");
+            ViewBag.Id_uzytkownika = new SelectList(db.uzytkownicy, "Id_uzytkownik", "Id_uzytkownik");
             return View();
         }
 
@@ -59,7 +61,7 @@ namespace Car_rental.Controllers
             }
 
             ViewBag.Id_samochodu = new SelectList(db.samochody, "Id_samochod", "Id_samochod", wypozyczenia.Id_samochodu);
-            ViewBag.Id_uzytkownika = new SelectList(db.uzytkownicy, "Id_uzytkownik", "Imie", wypozyczenia.Id_uzytkownika);
+            ViewBag.Id_uzytkownika = new SelectList(db.uzytkownicy, "Id_uzytkownik", "Id_uzytkownik", wypozyczenia.Id_uzytkownika);
             return View(wypozyczenia);
         }
 

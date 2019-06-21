@@ -1,5 +1,10 @@
 ﻿@model Car_rental.Models.kategorie
-
+@{
+    if (Session["Login"] == null)
+    {
+        Response.Redirect("~/Home/Index");
+    }
+}
 @{
     ViewBag.Title = "Edit";
 }
@@ -10,7 +15,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>kategorie</h4>
         <hr />

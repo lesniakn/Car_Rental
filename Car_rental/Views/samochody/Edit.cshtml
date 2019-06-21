@@ -1,5 +1,11 @@
 ﻿@model Car_rental.Models.samochody
-
+@{
+    int temp = Convert.ToInt32(Session["Rola"]);
+    if (Session["Login"] == null && temp >= 2)
+    {
+        Response.Redirect("~/Home/Index");
+    }
+}
 @{
     ViewBag.Title = "Edit";
 }
@@ -10,7 +16,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>samochody</h4>
         <hr />

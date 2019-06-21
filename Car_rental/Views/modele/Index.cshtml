@@ -1,5 +1,10 @@
 ﻿@model IEnumerable<Car_rental.Models.modele>
-
+@{
+    if (Session["Login"] == null)
+    {
+        Response.Redirect("~/Home/Index");
+    }
+}
 @{
     ViewBag.Title = "Index";
 }
@@ -17,17 +22,18 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nazwa)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id_model }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id_model }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id_model })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nazwa)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id_model }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id_model }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id_model })
+            </td>
+        </tr>
+    }
 
 </table>

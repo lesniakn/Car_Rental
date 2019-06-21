@@ -1,6 +1,10 @@
 ﻿@model Car_rental.Models.kategorie
-
 @{
+    if (Session["Login"] == null)
+    {
+        Response.Redirect("~/Home/Index");
+    }
+}
     ViewBag.Title = "Details";
 }
 

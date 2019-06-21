@@ -1,5 +1,10 @@
 ﻿@model Car_rental.Models.wypozyczenia
-
+@{
+    if (Session["Login"] == null)
+    {
+        Response.Redirect("~/Home/Index");
+    }
+}
 @{
     ViewBag.Title = "Details";
 }

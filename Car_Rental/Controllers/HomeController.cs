@@ -59,6 +59,7 @@ namespace Car_rental.Controllers
                 {
                     Session["Login"] = userDetails.Login;
                     Session["Rola"] = userDetails.Rola;
+                    Session["Id_uzytkownik"] = userDetails.Id_uzytkownik;
                     return RedirectToAction("Konto", "Home");
                 }
             }

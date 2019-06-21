@@ -1,7 +1,11 @@
 ﻿@model Car_rental.Models.marki
 
 @{
-    ViewBag.Title = "Edit";
+    int temp = Convert.ToInt32(Session["Rola"]);
+    if (Session["Login"] == null && temp >= 2)
+    {
+        Response.Redirect("~/Home/Index");
+    }
 }
 
 <h2>Edit</h2>
@@ -10,7 +14,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>marki</h4>
         <hr />
