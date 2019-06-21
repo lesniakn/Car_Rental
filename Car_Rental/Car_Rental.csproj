@@ -127,7 +127,12 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\kategorieController.cs" />
+    <Compile Include="Controllers\markiController.cs" />
+    <Compile Include="Controllers\modeleController.cs" />
     <Compile Include="Controllers\samochodyController.cs" />
+    <Compile Include="Controllers\uzytkownicyController.cs" />
+    <Compile Include="Controllers\wypozyczeniaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -229,6 +234,34 @@
     <Content Include="Views\samochody\Details.cshtml" />
     <Content Include="Views\samochody\Edit.cshtml" />
     <Content Include="Views\samochody\Index.cshtml" />
+    <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Views\uzytkownicy\Create.cshtml" />
+    <Content Include="Views\uzytkownicy\Delete.cshtml" />
+    <Content Include="Views\uzytkownicy\Details.cshtml" />
+    <Content Include="Views\uzytkownicy\Edit.cshtml" />
+    <Content Include="Views\uzytkownicy\Index.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\Konto.cshtml" />
+    <Content Include="Views\marki\Create.cshtml" />
+    <Content Include="Views\marki\Delete.cshtml" />
+    <Content Include="Views\marki\Details.cshtml" />
+    <Content Include="Views\marki\Edit.cshtml" />
+    <Content Include="Views\marki\Index.cshtml" />
+    <Content Include="Views\kategorie\Create.cshtml" />
+    <Content Include="Views\kategorie\Delete.cshtml" />
+    <Content Include="Views\kategorie\Details.cshtml" />
+    <Content Include="Views\kategorie\Edit.cshtml" />
+    <Content Include="Views\kategorie\Index.cshtml" />
+    <Content Include="Views\modele\Create.cshtml" />
+    <Content Include="Views\modele\Delete.cshtml" />
+    <Content Include="Views\modele\Details.cshtml" />
+    <Content Include="Views\modele\Edit.cshtml" />
+    <Content Include="Views\modele\Index.cshtml" />
+    <Content Include="Views\wypozyczenia\Create.cshtml" />
+    <Content Include="Views\wypozyczenia\Delete.cshtml" />
+    <Content Include="Views\wypozyczenia\Details.cshtml" />
+    <Content Include="Views\wypozyczenia\Edit.cshtml" />
+    <Content Include="Views\wypozyczenia\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -11,7 +11,8 @@ namespace Car_rental.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class samochody
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -25,6 +26,8 @@ namespace Car_rental.Models
         public Nullable<double> Silnik { get; set; }
         public Nullable<int> Id_marka { get; set; }
         public Nullable<int> Id_model { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         public Nullable<System.DateTime> Data_rejestracji { get; set; }
         public Nullable<double> Cena { get; set; }
         public Nullable<int> Id_kategoria { get; set; }

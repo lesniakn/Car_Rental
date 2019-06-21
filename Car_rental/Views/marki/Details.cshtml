@@ -1,0 +1,26 @@
+﻿@model Car_rental.Models.marki
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>marki</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nazwa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nazwa)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id_marka }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

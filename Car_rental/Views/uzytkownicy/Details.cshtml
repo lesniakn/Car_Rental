@@ -1,0 +1,90 @@
+﻿@model Car_rental.Models.uzytkownicy
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>uzytkownicy</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Imie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Imie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nazwisko)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nazwisko)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Adres_zamieszkania)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Adres_zamieszkania)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Data_urodzenia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data_urodzenia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Login)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Login)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Haslo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Haslo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nr_prawa_jazdy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nr_prawa_jazdy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PESEL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PESEL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Role.Nazwa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Role.Nazwa)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id_uzytkownik }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
