@@ -20,7 +20,6 @@ namespace Car_rental.Models
         {
             this.wypozyczenia = new HashSet<wypozyczenia>();
         }
-        [Required]
         public int Id_uzytkownik { get; set; }
         [Required]
         public string Imie { get; set; }

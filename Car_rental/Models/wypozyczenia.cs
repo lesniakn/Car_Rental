@@ -17,7 +17,6 @@ namespace Car_rental.Models
     {
         [Required]
         public int Id_wypozyczenia { get; set; }
-        [Required]
         public Nullable<int> Id_uzytkownika { get; set; }
         [Required]
         public Nullable<int> Id_samochodu { get; set; }
